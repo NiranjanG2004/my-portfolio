@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enable smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base styles for light mode */
+body {
+  @apply bg-white text-gray-800;
+}
+
+/* Dark mode styles */
+.dark body {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* Optional: Define custom classes if you want to reuse them */
+@layer components {
+  .section-heading {
+    @apply text-4xl md:text-5xl font-bold text-gray-800 text-center mb-12;
+    .dark & {
+      @apply text-gray-100;
+    }
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors;
+    .dark & {
+      @apply bg-blue-500 hover:bg-blue-600;
+    }
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors;
+    .dark & {
+      @apply bg-purple-500 hover:bg-purple-600;
+    }
+  }
+  
+}
