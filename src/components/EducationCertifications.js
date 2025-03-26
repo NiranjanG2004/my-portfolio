@@ -102,7 +102,7 @@ const EducationCertifications = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 text-center mb-12"
+        className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 text-center mb-12 mt-15"
       >
         Education & Certifications
       </motion.h1>

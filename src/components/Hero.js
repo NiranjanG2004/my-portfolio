@@ -66,7 +66,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between p-10 md:p-20 pt-20">
+    <div className="flex flex-col md:flex-row items-center justify-between p-10 md:p-20 pt-20 mt-20">
       {/* Left Section: Text and Social Icons */}
       <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
         <h1 className="text-5xl md:text-6xl font-bold text-gray-800 dark:text-gray-100 mb-4">
