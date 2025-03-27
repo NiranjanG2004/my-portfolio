@@ -105,6 +105,7 @@ const EducationCertifications = () => {
         className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 text-center mb-12 mt-15"
       >
         Education & Certifications
+        
       </motion.h1>
 
       {/* Education Section */}

@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import EducationCertifications from './components/EducationCertifications';
-import Skills from './components/Skills';
+import SkillsNew from './components/SkillsNew';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -27,10 +27,11 @@ function App() {
           <section id="education-certifications">
             <EducationCertifications />
           </section>
-          {/* Skills Section */}
-          <section id="skills">
-            <Skills />
+
+          <section id ="Skillsnew">
+            <SkillsNew/>
           </section>
+          
           {/* Projects Section */}
           <section id="projects">
             <Projects />
@@ -39,6 +40,8 @@ function App() {
           <section id="contact">
             <Contact />
           </section>
+
+          
         </div>
 
         {/* Footer */}

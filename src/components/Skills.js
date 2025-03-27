@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   DiReact, DiNodejsSmall, DiMongodb, DiJavascript1, DiCss3, DiHtml5,
-  DiJava, DiPython, DiGit, DiMysql, DiLinux
+  DiJava, DiPython, DiGit, DiLinux
 } from 'react-icons/di';
 import {
-  SiTypescript, SiNextdotjs, SiTailwindcss, SiGraphql, SiDocker,
-  SiAmazonwebservices, SiC, SiCplusplus, SiRedux, SiFirebase, SiFlutter,
+  SiTypescript, SiTailwindcss, SiGraphql, SiDocker,
+  SiAmazonwebservices, SiC, SiRedux, SiFlutter,
   SiKubernetes, SiTensorflow, SiApple
 } from 'react-icons/si';
 import { FaSearch, FaFilter, FaTimes } from 'react-icons/fa';
@@ -22,7 +22,6 @@ const Skills = () => {
         { name: 'JavaScript', icon: <DiJavascript1 className="text-4xl" />, color: '#F7DF1E', proficiency: 90, frequency: 'Daily' },
         { name: 'Java', icon: <DiJava className="text-4xl" />, color: '#007396', proficiency: 80, frequency: 'Weekly' },
         { name: 'C', icon: <SiC className="text-4xl" />, color: '#A8B9CC', proficiency: 70, frequency: 'Occasional' },
-        { name: 'C++', icon: <SiCplusplus className="text-4xl" />, color: '#00599C', proficiency: 65, frequency: 'Occasional' },
         { name: 'Python', icon: <DiPython className="text-4xl" />, color: '#3776AB', proficiency: 85, frequency: 'Weekly' },
       ]
     },
@@ -30,7 +29,6 @@ const Skills = () => {
       name: "Frontend Development",
       skills: [
         { name: 'React', icon: <DiReact className="text-4xl" />, color: '#61DAFB', proficiency: 95, frequency: 'Daily' },
-        { name: 'Next.js', icon: <SiNextdotjs className="text-4xl" />, color: '#000000', proficiency: 85, frequency: 'Weekly' },
         { name: 'HTML5', icon: <DiHtml5 className="text-4xl" />, color: '#E34F26', proficiency: 90, frequency: 'Daily' },
         { name: 'CSS3', icon: <DiCss3 className="text-4xl" />, color: '#1572B6', proficiency: 90, frequency: 'Daily' },
         { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-4xl" />, color: '#38B2AC', proficiency: 80, frequency: 'Weekly' },
@@ -41,8 +39,6 @@ const Skills = () => {
       skills: [
         { name: 'Node.js', icon: <DiNodejsSmall className="text-4xl" />, color: '#539E43', proficiency: 85, frequency: 'Weekly' },
         { name: 'MongoDB', icon: <DiMongodb className="text-4xl" />, color: '#47A248', proficiency: 80, frequency: 'Weekly' },
-        { name: 'MySQL', icon: <DiMysql className="text-4xl" />, color: '#4479A1', proficiency: 75, frequency: 'Occasional' },
-        { name: 'Firebase', icon: <SiFirebase className="text-4xl" />, color: '#FFCA28', proficiency: 70, frequency: 'Occasional' },
       ]
     },
     {
@@ -55,7 +51,6 @@ const Skills = () => {
         { name: 'Linux', icon: <DiLinux className="text-4xl" />, color: '#FCC624', proficiency: 80, frequency: 'Weekly' },
       ]
     },
-    
   ];
 
   const allCategories = ['All', ...skillCategories.map(category => category.name)];
@@ -246,8 +241,8 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-4 md:px-20 scroll-mt-20 relative">
-      <div className="container mx-auto relative z-20">
+    <section id="skills" className="py-20 px-4 md:px-20 scroll-mt-7 relative">
+      <div className="container mx-auto relative z-20 flex flex-col justify-center items-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -256,12 +251,10 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 text-center mb-12">
-            My Technical Toolkit
+            Skills
           </h1>
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-400 mx-auto rounded-full"></div>
-          <p className="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto">
-            I've developed expertise across the full software development stack.
-            Hover over skills to explore my proficiency and usage frequency.
+          <p className="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto text-lg">
+            Over the past 2 years, I have been honing my skills in various domains, gaining hands-on experience and practical knowledge. Below are the areas I excel in and continue to grow my expertise.
           </p>
         </motion.div>
 
@@ -333,7 +326,7 @@ const Skills = () => {
           ))}
         </motion.div>
 
-        <div className="space-y-20">
+        <div className="space-y-20 w-full max-w-5xl">
           {filteredSkills.length > 0 ? (
             filteredSkills.map((category, catIndex) => (
               category.skills.length > 0 && (
@@ -371,7 +364,7 @@ const Skills = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-16"
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-16 justify-center"
                   >
                     {category.skills.map((skill, index) => (
                       <motion.div
@@ -412,7 +405,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-24 text-center px-4 py-8 bg-gray-800/40 dark:bg-gray-900/40 backdrop-blur-md rounded-xl border border-gray-700 dark:border-gray-600"
+          className="mt-24 text-center px-4 py-8 bg-gray-800/40 dark:bg-gray-900/40 backdrop-blur-md rounded-xl border border-gray-700 dark:border-gray-600 w-full max-w-5xl"
         >
           <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4">My Learning Journey</h3>
           <p className="text-gray-300 dark:text-gray-400 max-w-3xl mx-auto">

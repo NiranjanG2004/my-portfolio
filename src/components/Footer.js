@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiInstagram, FiArrowUp, FiUsers } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiInstagram, FiArrowUp } from 'react-icons/fi';
 
 const Footer = () => {
   const year = new Date().getFullYear();
   // eslint-disable-next-line no-empty-pattern
   const [] = useState('');
-  const [visitorCount, setVisitorCount] = useState(0);
+  const [, setVisitorCount] = useState(0);
   const [showGlow, setShowGlow] = useState(false);
   const controls = useAnimation();
 
@@ -96,6 +96,7 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 relative z-20">
         {/* Scroll to Top Button with Particle Effect */}
+        {/* Hidden button on left side*/}
         <motion.button
           onClick={scrollToTop}
           initial={{ opacity: 0, y: 10 }}
@@ -146,11 +147,12 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-10 relative"
+            className="mb-0 relative"
           >
-            <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 relative z-10">
+            <h2 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 relative z-10 mb-4 leading-tight">
               Niranjan
             </h2>
+
             <motion.div
               className="absolute inset-0 blur-md bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full"
               animate={showGlow ? { opacity: [0.3, 0.6, 0.3] } : { opacity: 0 }}
@@ -169,9 +171,9 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mb-10 w-full max-w-md"
           >
-            
-              
-        
+
+
+
           </motion.div>
 
           {/* Social Links with 3D Effect */}
@@ -204,17 +206,7 @@ const Footer = () => {
             ))}
           </motion.div>
 
-          {/* Visitor Counter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-10 flex items-center justify-center gap-2 text-gray-600 dark:text-gray-400"
-          >
-            <FiUsers />
-            <span>Visitors: {visitorCount.toLocaleString()}</span>
-          </motion.div>
+
 
           {/* Copyright and Credits */}
           <motion.div

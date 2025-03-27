@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiInfo, FiChevronUp, FiX, FiAward } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiInfo, FiX, FiAward } from 'react-icons/fi';
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [, setShowScrollTop] = useState(false);
   const modalRef = useRef(null);
 
   const projects = [
@@ -144,10 +144,6 @@ const Projects = () => {
     setShowModal(false);
   });
 
-  const scrollToTop = () => {
-    const projectsSection = document.getElementById('projects');
-    projectsSection?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -236,7 +232,6 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4">
             My Projects
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-400 mx-auto rounded-full"></div>
           <p className="text-gray-600 dark:text-gray-400 mt-6 max-w-2xl mx-auto">
             Explore my portfolio of projects showcasing my skills in web development, data science, and cloud architecture.
           </p>
@@ -293,17 +288,8 @@ const Projects = () => {
           >
             Data Science <span className="ml-1 opacity-70">({allItems.filter(p => p.category === 'data').length})</span>
           </button>
-          <button
-            onClick={() => setFilter('certification')}
-            className={`px-6 py-2 rounded-lg transition-all ${
-              filter === 'certification'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
-            }`}
-            aria-pressed={filter === 'certification'}
-          >
-            Certifications <span className="ml-1 opacity-70">({allItems.filter(p => p.category === 'certification').length})</span>
-          </button>
+        
+            
         </motion.div>
 
         {loading && (
@@ -471,23 +457,6 @@ const Projects = () => {
             <FiGithub /> View All Projects on GitHub
           </a>
         </motion.div>
-
-        <AnimatePresence>
-          {showScrollTop && (
-            <motion.button
-              className="fixed bottom-8 right-8 p-3 bg-blue-600 text-white rounded-full shadow-lg z-40"
-              onClick={scrollToTop}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Scroll to top"
-            >
-              <FiChevronUp className="text-xl" />
-            </motion.button>
-          )}
-        </AnimatePresence>
       </div>
 
       <AnimatePresence>
