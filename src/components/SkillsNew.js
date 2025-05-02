@@ -6,7 +6,7 @@ import {
 } from 'react-icons/di';
 import {
   SiTypescript, SiTailwindcss, SiGraphql, SiDocker,
-  SiAmazonwebservices, SiC, SiRedux, SiFlutter,
+  SiAmazonwebservices, SiRedux, SiFlutter,
   SiKubernetes, SiTensorflow, SiApple
 } from 'react-icons/si';
 
@@ -16,8 +16,8 @@ const skillCategories = [
     skills: [
       { name: 'JavaScript', icon: <DiJavascript1 className="text-2xl" />, color: '#F7DF1E' },
       { name: 'Java', icon: <DiJava className="text-2xl" />, color: '#007396' },
-      { name: 'C', icon: <SiC className="text-2xl" />, color: '#A8B9CC' },
-      { name: 'Python', icon: <DiPython className="text-2xl" />, color: '#3776AB' },
+      // { name: 'C', icon: <SiC className="text-2xl" />, color: '#A8B9CC' },
+      // { name: 'Python', icon: <DiPython className="text-2xl" />, color: '#3776AB' },
     ]
   },
   {
@@ -35,17 +35,17 @@ const skillCategories = [
       { name: 'Node.js', icon: <DiNodejsSmall className="text-2xl" />, color: '#539E43' },
       { name: 'MongoDB', icon: <DiMongodb className="text-2xl" />, color: '#47A248' },
     ]
-  },
-  {
-    name: "DevOps & Tools",
-    skills: [
-      { name: 'Git', icon: <DiGit className="text-2xl" />, color: '#F05032' },
-      { name: 'Docker', icon: <SiDocker className="text-2xl" />, color: '#2496ED' },
-      { name: 'Kubernetes', icon: <SiKubernetes className="text-2xl" />, color: '#326CE5' },
-      { name: 'AWS', icon: <SiAmazonwebservices className="text-2xl" />, color: '#FF9900' },
-      { name: 'Linux', icon: <DiLinux className="text-2xl" />, color: '#FCC624' },
-    ]
-  },
+  }
+  // {
+  //   name: "DevOps & Tools",
+  //   skills: [
+  //     { name: 'Git', icon: <DiGit className="text-2xl" />, color: '#F05032' },
+  //     { name: 'Docker', icon: <SiDocker className="text-2xl" />, color: '#2496ED' },
+  //     { name: 'Kubernetes', icon: <SiKubernetes className="text-2xl" />, color: '#326CE5' },
+  //     { name: 'AWS', icon: <SiAmazonwebservices className="text-2xl" />, color: '#FF9900' },
+  //     { name: 'Linux', icon: <DiLinux className="text-2xl" />, color: '#FCC624' },
+  //   ]
+  // },
 ];
 
 const SkillsNew = () => {

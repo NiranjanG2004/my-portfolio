@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import awsLogo from '../assets/aws-logo.png';
-import { FaDownload, FaTimes } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa';
 
 const EducationCertifications = () => {
-  const [selectedCert, setSelectedCert] = useState(null); // For certificate preview modal
   const controls = useAnimation(); // For timeline animation
 
   const education = [
@@ -78,7 +77,6 @@ const EducationCertifications = () => {
   };
 
   // Trigger animation when section comes into view
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
     const section = document.getElementById('education-certifications');
     if (section) {
@@ -93,7 +91,7 @@ const EducationCertifications = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [controls, handleScroll]);
+  }, [controls]);
 
   return (
     <div id="education-certifications" className="py-20 px-4 md:px-20 scroll-mt-20 relative">
@@ -105,7 +103,6 @@ const EducationCertifications = () => {
         className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 text-center mb-12 mt-15"
       >
         Education & Certifications
-        
       </motion.h1>
 
       {/* Education Section */}
@@ -236,14 +233,35 @@ const EducationCertifications = () => {
                 </div>
               </div>
               <div className="flex space-x-3">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedCert(cert)}
-                  className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 dark:bg-blue-400 dark:hover:bg-blue-500 transition-colors duration-300"
+                <a
+                  href={cert.preview} // Open preview in new tab
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 dark:bg-blue-400 dark:hover:bg-blue-500 transition-colors duration-300 flex items-center space-x-2"
+                  aria-label={`View ${cert.name} in new tab`}
                 >
-                  Preview
-                </motion.button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                  <span>Preview</span>
+                </a>
                 <a
                   href={cert.link}
                   download
@@ -257,57 +275,6 @@ const EducationCertifications = () => {
           ))}
         </div>
       </div>
-
-      {/* Certificate Preview Modal */}
-      {selectedCert && (
-        <motion.div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setSelectedCert(null)}
-        >
-          <motion.div
-            className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 200 }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedCert(null)}
-              className="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            >
-              <FaTimes size={24} />
-            </button>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">{selectedCert.name}</h3>
-            {/* PDF Preview using iframe */}
-            <div className="bg-gray-200 dark:bg-gray-800 h-96 flex items-center justify-center rounded-lg overflow-hidden">
-              {selectedCert.preview ? (
-                <iframe
-                  src={selectedCert.preview}
-                  title={selectedCert.name}
-                  className="w-full h-full border-none"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<p className="text-gray-500 dark:text-gray-400">Failed to load PDF. Please download the certificate.</p>';
-                  }}
-                />
-              ) : (
-                <p className="text-gray-500 dark:text-gray-400">No preview available</p>
-              )}
-            </div>
-            <a
-              href={selectedCert.link}
-              download
-              className="mt-4 inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 dark:bg-blue-400 dark:hover:bg-blue-500 transition-colors duration-300"
-            >
-              Download Certificate
-            </a>
-          </motion.div>
-        </motion.div>
-      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Tilt } from 'react-tilt';
-import { FiMapPin, FiMail, FiPhone, FiLinkedin, FiGithub, FiDownload, FiEye, FiX } from 'react-icons/fi';
+import { FiMapPin, FiMail, FiPhone, FiLinkedin, FiGithub, FiDownload, FiEye } from 'react-icons/fi';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,9 +13,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errors, setErrors] = useState({});
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
-  // eslint-disable-next-line no-empty-pattern
-  const [] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -98,18 +95,18 @@ const Contact = () => {
     {
       icon: <FiMapPin className="text-2xl" />,
       title: 'Location',
-      details: 'Dharamapuri, India',
+      details: 'Erode, India',
       interactive: false,
     },
     {
       icon: <FiMail className="text-2xl" />,
       title: 'Email',
-      details: 'mvarunmathi2004@gmail.com',
+      details: 'niranjang1614@gmail.com',
     },
     {
       icon: <FiPhone className="text-2xl" />,
       title: 'Phone',
-      details: '+91 8438229804',
+      details: '+91 9345818401',
     },
   ];
 
@@ -457,13 +454,15 @@ const Contact = () => {
                         </p>
                       </div>
                       <div className="flex space-x-2">
-                        <button
-                          onClick={() => setIsResumeModalOpen(true)}
+                        <a
+                          href="/assets/resume.pdf" // Path to your resume file
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="p-3 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition-all duration-300 transform hover:scale-110 hover:rotate-6"
-                          aria-label="View Resume"
+                          aria-label="View Resume in New Tab"
                         >
                           <FiEye />
-                        </button>
+                        </a>
                         <a
                           href="/assets/resume.pdf" // Path to your resume file
                           download
@@ -476,95 +475,11 @@ const Contact = () => {
                     </div>
                   </motion.div>
                 </Tilt>
-
-                {/* Resume Preview Modal */}
-                {isResumeModalOpen && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-                    onClick={() => setIsResumeModalOpen(false)}
-                  >
-                    <motion.div
-                      initial={{ scale: 0.8 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0.8 }}
-                      className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-3xl"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <div className="flex justify-between items-center mb-4">
-                        <h4 className="text-xl font-bold text-gray-800 dark:text-gray-100">
-                          Resume Preview
-                        </h4>
-                        <button
-                          onClick={() => setIsResumeModalOpen(false)}
-                          className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
-                          aria-label="Close Modal"
-                        >
-                          <FiX size={24} />
-                        </button>
-                      </div>
-                      <iframe
-                        src="/assets/resume.pdf" // Path to your resume file
-                        title="Resume Preview"
-                        className="w-full h-96 rounded-lg"
-                      />
-                    </motion.div>
-                  </motion.div>
-                )}
               </div>
-
-              {/* Call-to-Action Card */}
-              <Tilt options={{ max: 25, scale: 1.05, speed: 300 }}>
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 mt-8 transform hover:-translate-y-1 hover:shadow-xl transition-all">
-                  <div className="absolute -top-3 -right-3 bg-purple-600 rounded-full p-2 shadow-lg">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-white"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
-                        clipRule="evenodd"
-                      />
-                      <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-xl font-bold text-white mb-3">
-                    Let's work together!
-                  </h4>
-                  <p className="text-gray-200 mb-4">
-                    I'm currently available for freelance work or full-time positions. If you have a project that needs some creative work, feel free to contact me!
-                  </p>
-                  <a
-                    href="mailto:niranjang1614@gmail.com"
-                    className="inline-flex items-center text-blue-200 hover:text-white transition-colors font-medium group"
-                  >
-                    niranjang1614@gmail.com
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="ml-1 h-5 w-5 transform group-hover:translate-x-1 transition-transform"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </Tilt>
             </div>
           </motion.div>
         </div>
       </div>
-
-      
     </section>
   );
 };

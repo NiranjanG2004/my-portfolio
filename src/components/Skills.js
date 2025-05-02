@@ -21,8 +21,8 @@ const Skills = () => {
       skills: [
         { name: 'JavaScript', icon: <DiJavascript1 className="text-4xl" />, color: '#F7DF1E', proficiency: 90, frequency: 'Daily' },
         { name: 'Java', icon: <DiJava className="text-4xl" />, color: '#007396', proficiency: 80, frequency: 'Weekly' },
-        { name: 'C', icon: <SiC className="text-4xl" />, color: '#A8B9CC', proficiency: 70, frequency: 'Occasional' },
-        { name: 'Python', icon: <DiPython className="text-4xl" />, color: '#3776AB', proficiency: 85, frequency: 'Weekly' },
+        // { name: 'C', icon: <SiC className="text-4xl" />, color: '#A8B9CC', proficiency: 70, frequency: 'Occasional' },
+        // { name: 'Python', icon: <DiPython className="text-4xl" />, color: '#3776AB', proficiency: 85, frequency: 'Weekly' },
       ]
     },
     {
@@ -34,23 +34,23 @@ const Skills = () => {
         { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-4xl" />, color: '#38B2AC', proficiency: 80, frequency: 'Weekly' },
       ]
     },
-    {
-      name: "Backend Development",
-      skills: [
-        { name: 'Node.js', icon: <DiNodejsSmall className="text-4xl" />, color: '#539E43', proficiency: 85, frequency: 'Weekly' },
-        { name: 'MongoDB', icon: <DiMongodb className="text-4xl" />, color: '#47A248', proficiency: 80, frequency: 'Weekly' },
-      ]
-    },
-    {
-      name: "DevOps & Tools",
-      skills: [
-        { name: 'Git', icon: <DiGit className="text-4xl" />, color: '#F05032', proficiency: 90, frequency: 'Daily' },
-        { name: 'Docker', icon: <SiDocker className="text-4xl" />, color: '#2496ED', proficiency: 70, frequency: 'Occasional' },
-        { name: 'Kubernetes', icon: <SiKubernetes className="text-4xl" />, color: '#326CE5', proficiency: 65, frequency: 'Occasional' },
-        { name: 'AWS', icon: <SiAmazonwebservices className="text-4xl" />, color: '#FF9900', proficiency: 75, frequency: 'Weekly' },
-        { name: 'Linux', icon: <DiLinux className="text-4xl" />, color: '#FCC624', proficiency: 80, frequency: 'Weekly' },
-      ]
-    },
+    // {
+    //   name: "Backend Development",
+    //   skills: [
+    //     { name: 'Node.js', icon: <DiNodejsSmall className="text-4xl" />, color: '#539E43', proficiency: 85, frequency: 'Weekly' },
+    //     { name: 'MongoDB', icon: <DiMongodb className="text-4xl" />, color: '#47A248', proficiency: 80, frequency: 'Weekly' },
+    //   ]
+    // },
+    // {
+    //   name: "DevOps & Tools",
+    //   skills: [
+    //     { name: 'Git', icon: <DiGit className="text-4xl" />, color: '#F05032', proficiency: 90, frequency: 'Daily' },
+    //     { name: 'Docker', icon: <SiDocker className="text-4xl" />, color: '#2496ED', proficiency: 70, frequency: 'Occasional' },
+    //     { name: 'Kubernetes', icon: <SiKubernetes className="text-4xl" />, color: '#326CE5', proficiency: 65, frequency: 'Occasional' },
+    //     { name: 'AWS', icon: <SiAmazonwebservices className="text-4xl" />, color: '#FF9900', proficiency: 75, frequency: 'Weekly' },
+    //     { name: 'Linux', icon: <DiLinux className="text-4xl" />, color: '#FCC624', proficiency: 80, frequency: 'Weekly' },
+    //   ]
+    // },
   ];
 
   const allCategories = ['All', ...skillCategories.map(category => category.name)];
