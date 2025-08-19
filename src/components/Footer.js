@@ -188,7 +188,7 @@ const Footer = () => {
           >
             <div className="mb-2 sm:mb-4 w-16 sm:w-20 h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent mx-auto"></div>
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-              © {year} Niranjan. All Rights Reserved.
+              © {year} Niranjan❤️All Rights Reserved.
             </p>
           </motion.div>
 

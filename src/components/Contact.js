@@ -455,7 +455,7 @@ const Contact = () => {
                       </div>
                       <div className="flex space-x-2">
                         <a
-                          href="/assets/resume.pdf" // Path to your resume file
+                          href="/assets/Niranjan-71.pdf" // Path to your resume file
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-3 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition-all duration-300 transform hover:scale-110 hover:rotate-6"
@@ -464,7 +464,7 @@ const Contact = () => {
                           <FiEye />
                         </a>
                         <a
-                          href="/assets/resume.pdf" // Path to your resume file
+                          href="/assets/Niranjan-71.pdf" // Path to your resume file
                           download
                           className="p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all duration-300 transform hover:scale-110 hover:rotate-6"
                           aria-label="Download Resume"

@@ -1,14 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-  DiReact, DiNodejsSmall, DiMongodb, DiJavascript1, DiCss3, DiHtml5,
-  DiJava, DiPython, DiGit, DiLinux
-} from 'react-icons/di';
-import {
-  SiTypescript, SiTailwindcss, SiGraphql, SiDocker,
-  SiAmazonwebservices, SiRedux, SiFlutter,
-  SiKubernetes, SiTensorflow, SiApple
-} from 'react-icons/si';
+
+// Icons
+import { DiReact, DiNodejsSmall, DiMongodb, DiJavascript1, DiCss3, DiHtml5, DiJava, DiPython, DiGit, DiLinux, DiCode } from 'react-icons/di';
+import { SiTypescript, SiTailwindcss, SiRedux, SiFigma, SiAdobephotoshop, SiCanva } from "react-icons/si";
 
 const skillCategories = [
   {
@@ -16,8 +11,8 @@ const skillCategories = [
     skills: [
       { name: 'JavaScript', icon: <DiJavascript1 className="text-2xl" />, color: '#F7DF1E' },
       { name: 'Java', icon: <DiJava className="text-2xl" />, color: '#007396' },
-      // { name: 'C', icon: <SiC className="text-2xl" />, color: '#A8B9CC' },
-      // { name: 'Python', icon: <DiPython className="text-2xl" />, color: '#3776AB' },
+      { name: 'C', icon: <DiCode className="text-2xl" />, color: '#A8B9CC' },
+      //
     ]
   },
   {
@@ -27,7 +22,8 @@ const skillCategories = [
       { name: 'HTML5', icon: <DiHtml5 className="text-2xl" />, color: '#E34F26' },
       { name: 'CSS3', icon: <DiCss3 className="text-2xl" />, color: '#1572B6' },
       { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl" />, color: '#38B2AC' },
-    ]
+//    
+]
   },
   {
     name: "Backend Development",
@@ -35,17 +31,16 @@ const skillCategories = [
       { name: 'Node.js', icon: <DiNodejsSmall className="text-2xl" />, color: '#539E43' },
       { name: 'MongoDB', icon: <DiMongodb className="text-2xl" />, color: '#47A248' },
     ]
+  },
+  
+  {
+    name: "Design Tools",
+    skills: [
+      { name: 'Figma', icon: <SiFigma className="text-2xl" />, color: '#F24E1E' },
+      { name: 'Photoshop', icon: <SiAdobephotoshop className="text-2xl" />, color: '#31A8FF' },
+      { name: 'Canva', icon: <SiCanva className="text-2xl" />, color: '#20C4CB' },
+    ]
   }
-  // {
-  //   name: "DevOps & Tools",
-  //   skills: [
-  //     { name: 'Git', icon: <DiGit className="text-2xl" />, color: '#F05032' },
-  //     { name: 'Docker', icon: <SiDocker className="text-2xl" />, color: '#2496ED' },
-  //     { name: 'Kubernetes', icon: <SiKubernetes className="text-2xl" />, color: '#326CE5' },
-  //     { name: 'AWS', icon: <SiAmazonwebservices className="text-2xl" />, color: '#FF9900' },
-  //     { name: 'Linux', icon: <DiLinux className="text-2xl" />, color: '#FCC624' },
-  //   ]
-  // },
 ];
 
 const SkillsNew = () => {
@@ -75,20 +70,17 @@ const SkillsNew = () => {
 
   return (
     <section id="skills" className="py-20 px-4 md:px-20 relative ">
-          <div className="container mx-auto relative z-20 flex flex-col justify-center items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-16"
-            >
+      <div className="container mx-auto relative z-20 flex flex-col justify-center items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 text-center mb-12">
             Skills
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mt-6 max-w-xl mx-auto">
-            Over the past 2 years, I have been honing my skills in various domains, gaining hands-on experience and practical knowledge. Below are the areas I excel in and continue to grow my expertise.
-          </p>
         </motion.div>
 
         <motion.div
