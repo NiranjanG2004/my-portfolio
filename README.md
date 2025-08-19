@@ -1,4 +1,4 @@
-# Hrishi Patel Portfolio
+# Niranjan Portfolio
 
 A personal portfolio website built with React and Tailwind CSS.
 
