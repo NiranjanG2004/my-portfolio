@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const ParticleBackground = () => {
@@ -9,7 +9,7 @@ const ParticleBackground = () => {
   const particlesRef = useRef(null);
 
   // Reduced particle count and speed
-  const PARTICLE_COUNT = 600; // was 1000
+  const PARTICLE_COUNT = 600; // Reduced count for better performance
   const PARTICLE_SIZE = 0.02;
 
   useEffect(() => {
@@ -23,31 +23,16 @@ const ParticleBackground = () => {
       0.1,
       1000
     );
-    rendererRef.current = new THREE.WebGLRenderer({ alpha: true });
+    rendererRef.current = new THREE.WebGLRenderer({
+      alpha: true,
+      powerPreference: 'default', // Use default power preference for better compatibility
+      antialias: false, // Disable antialiasing for better performance
+    });
 
     // Configure renderer
     rendererRef.current.setSize(window.innerWidth, window.innerHeight);
-    rendererRef.current.setPixelRatio(window.devicePixelRatio);
+    rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
     containerRef.current.appendChild(rendererRef.current.domElement);
-
-    // Create particles
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(PARTICLE_COUNT * 3);
-    const velocities = new Float32Array(PARTICLE_COUNT * 3);
-
-    for (let i = 0; i < PARTICLE_COUNT * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 10;
-      positions[i + 1] = (Math.random() - 0.5) * 10;
-      positions[i + 2] = (Math.random() - 0.5) * 10;
-
-      // Reduced velocity range for slower movement
-      velocities[i] = (Math.random() - 0.5) * 0.004;   // was 0.01
-      velocities[i + 1] = (Math.random() - 0.5) * 0.004;
-      velocities[i + 2] = (Math.random() - 0.5) * 0.004;
-    }
-
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
 
     // Create a circular texture for round particles
     function createCircleTexture() {
@@ -63,6 +48,25 @@ const ParticleBackground = () => {
       ctx.fill();
       return new THREE.CanvasTexture(canvas);
     }
+
+    // Create particles
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(PARTICLE_COUNT * 3);
+    const velocities = new Float32Array(PARTICLE_COUNT * 3);
+
+    for (let i = 0; i < PARTICLE_COUNT * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 10;
+      positions[i + 1] = (Math.random() - 0.5) * 10;
+      positions[i + 2] = (Math.random() - 0.5) * 10;
+
+      // Reduced velocity range for slower movement
+      velocities[i] = (Math.random() - 0.5) * 0.004;
+      velocities[i + 1] = (Math.random() - 0.5) * 0.004;
+      velocities[i + 2] = (Math.random() - 0.5) * 0.004;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
 
     const material = new THREE.PointsMaterial({
       size: PARTICLE_SIZE,
@@ -80,9 +84,12 @@ const ParticleBackground = () => {
 
     cameraRef.current.position.z = 5;
 
-    // Animation
+    // Animation - use requestAnimationFrame with cleanup
+    let frameId;
     const animate = () => {
-      requestAnimationFrame(animate);
+      frameId = requestAnimationFrame(animate);
+
+      if (!particlesRef.current) return;
 
       const positions = particlesRef.current.geometry.attributes.position.array;
       const velocities = particlesRef.current.geometry.attributes.velocity.array;
@@ -104,13 +111,17 @@ const ParticleBackground = () => {
       particlesRef.current.rotation.x += 0.0003;
       particlesRef.current.rotation.y += 0.0005;
 
-      rendererRef.current.render(sceneRef.current, cameraRef.current);
+      if (rendererRef.current && sceneRef.current && cameraRef.current) {
+        rendererRef.current.render(sceneRef.current, cameraRef.current);
+      }
     };
 
     animate();
 
     // Handle resize
     const handleResize = () => {
+      if (!cameraRef.current || !rendererRef.current) return;
+
       cameraRef.current.aspect = window.innerWidth / window.innerHeight;
       cameraRef.current.updateProjectionMatrix();
       rendererRef.current.setSize(window.innerWidth, window.innerHeight);
@@ -118,10 +129,25 @@ const ParticleBackground = () => {
 
     window.addEventListener('resize', handleResize);
 
+    // Enhanced cleanup to avoid memory leaks
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (containerRef.current && rendererRef.current) {
+      cancelAnimationFrame(frameId);
+
+      if (containerRef.current && rendererRef.current && rendererRef.current.domElement) {
         containerRef.current.removeChild(rendererRef.current.domElement);
+      }
+
+      if (particlesRef.current && particlesRef.current.geometry) {
+        particlesRef.current.geometry.dispose();
+      }
+
+      if (material) {
+        material.dispose();
+      }
+
+      if (rendererRef.current) {
+        rendererRef.current.dispose();
       }
     };
   }, []);
